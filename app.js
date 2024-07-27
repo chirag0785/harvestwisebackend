@@ -102,7 +102,7 @@ app.get('/gpt/tip', async (req, res, next) => {
         }
     }
 });
-const PORT=3000;
+const PORT=process.env.PORT||3000;
 mongoose.connect(`mongodb+srv://chirag:${process.env.DB_PASSWORD}@cluster0.ows0qor.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
 .then(()=>{
     httpServer.listen(PORT,()=>{
