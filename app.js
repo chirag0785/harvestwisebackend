@@ -22,7 +22,7 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cors({
-    origin:'*',
+    origin:'https://66a50b587b4de535b34150d7--symphonious-duckanoo-7fe7ec.netlify.app',
     credentials: true
 }))
 app.use('/crops',cropRouter);
@@ -36,7 +36,7 @@ app.use('/inventory',inventoryRouter);
 const httpServer=createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: '*',
+        origin: 'https://66a50b587b4de535b34150d7--symphonious-duckanoo-7fe7ec.netlify.app',
         credentials: true
     }
 });
