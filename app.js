@@ -22,7 +22,7 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cors({
-    origin:process.env.BASE_URL,
+    origin:JSON.parse(process.env.BASE_URL),
     credentials: true
 }))
 app.use('/crops',cropRouter);
