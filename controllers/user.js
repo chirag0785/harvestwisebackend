@@ -1,4 +1,5 @@
 const User = require('../models/user');
+require('dotenv').config();
 const jwt=require('jsonwebtoken');
 const ErrorWrapper = require('../utils/ErrorWrapper');
 const ErrorHandler = require('../utils/ErrorHandler');
@@ -95,13 +96,13 @@ module.exports.postLogin=ErrorWrapper(async (req,res,next)=>{
     }).select("-password -refreshToken").populate('cart.id orders.id');
     res.cookie("RefreshToken", refreshToken, { 
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: process.env.NODE_ENV==='production',
         sameSite: 'strict'
     });
 
     res.cookie("AccessToken", accessToken, { 
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: process.env.NODE_ENV==='production',
         sameSite: 'strict'
     });
 
