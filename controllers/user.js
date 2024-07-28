@@ -97,13 +97,13 @@ module.exports.postLogin=ErrorWrapper(async (req,res,next)=>{
     res.cookie("RefreshToken", refreshToken, { 
         httpOnly: true,
         secure: process.env.NODE_ENV==='production',
-        sameSite: 'strict'
+        sameSite:'Strict'
     });
 
     res.cookie("AccessToken", accessToken, { 
         httpOnly: true,
         secure: process.env.NODE_ENV==='production',
-        sameSite: 'strict'
+        sameSite: 'Strict'
     });
 
     res.status(200).json({
@@ -129,13 +129,13 @@ module.exports.postLogout=ErrorWrapper(async (req,res,next)=>{
         res.cookie("RefreshToken", "", { 
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict'
+            sameSite: 'Strict'
         });
     
         res.cookie("AccessToken", "", { 
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict'
+            sameSite: 'Strict'
         });
         res.status(200).json({msg:"logged out"});
 })
@@ -172,12 +172,12 @@ module.exports.patchUpdateUserInfo=ErrorWrapper(async (req,res,next)=>{
     .cookie("RefreshToken",refreshToken, { 
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict'
+        sameSite: 'Strict'
     })
     .cookie("AccessToken",accessToken, { 
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict'
+        sameSite: 'Strict'
     })
     .json({user,success:true});
 })
@@ -233,7 +233,7 @@ module.exports.getUserOnRefresh = ErrorWrapper(async (req, res, next) => {
                 res.cookie('AccessToken', newAccessToken, { 
                     httpOnly: true,
                     secure: process.env.NODE_ENV === 'production',
-                    sameSite: 'strict'
+                    sameSite: 'Strict'
                 });
                 res.status(200).json({ user, success: true });
             } catch (err) {
