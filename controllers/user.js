@@ -97,13 +97,13 @@ module.exports.postLogin=ErrorWrapper(async (req,res,next)=>{
     res.cookie("RefreshToken", refreshToken, { 
         httpOnly: true,
         secure: process.env.NODE_ENV==='production',
-        sameSite:'Strict'
+        sameSite:'None'
     });
 
     res.cookie("AccessToken", accessToken, { 
         httpOnly: true,
         secure: process.env.NODE_ENV==='production',
-        sameSite: 'Strict'
+        sameSite: 'None'
     });
 
     res.status(200).json({
@@ -129,13 +129,13 @@ module.exports.postLogout=ErrorWrapper(async (req,res,next)=>{
         res.cookie("RefreshToken", "", { 
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'Strict'
+            sameSite: 'None'
         });
     
         res.cookie("AccessToken", "", { 
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'Strict'
+            sameSite: 'None'
         });
         res.status(200).json({msg:"logged out"});
 })
@@ -172,12 +172,12 @@ module.exports.patchUpdateUserInfo=ErrorWrapper(async (req,res,next)=>{
     .cookie("RefreshToken",refreshToken, { 
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'Strict'
+        sameSite: 'None'
     })
     .cookie("AccessToken",accessToken, { 
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'Strict'
+        sameSite: 'None'
     })
     .json({user,success:true});
 })
