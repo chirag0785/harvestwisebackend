@@ -22,7 +22,7 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cors({
-    origin:'https://66a511d57b4de53ac2415103--keen-froyo-7f5d5e.netlify.app',
+    origin:process.env.BASE_URL,
     credentials: true
 }))
 app.use('/crops',cropRouter);
@@ -36,7 +36,7 @@ app.use('/inventory',inventoryRouter);
 const httpServer=createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: 'https://66a511d57b4de53ac2415103--keen-froyo-7f5d5e.netlify.app',
+        origin: process.env.BASE_URL,
         credentials: true
     }
 });
