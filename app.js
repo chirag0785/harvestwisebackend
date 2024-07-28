@@ -21,8 +21,15 @@ const bodyParser=require('body-parser');
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+let corsOrigins;
+try {
+  corsOrigins = JSON.parse(process.env.BASE_URL.replace(/^'|'$/g, ''));
+} catch (error) {
+  console.error('Error parsing BASE_URL:', error);
+  corsOrigins = '*'; // fallback to allow all origins
+}
 app.use(cors({
-    origin:JSON.parse(process.env.BASE_URL),
+    origin:corsOrigins,
     credentials: true
 }))
 app.use('/crops',cropRouter);
@@ -36,7 +43,7 @@ app.use('/inventory',inventoryRouter);
 const httpServer=createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: JSON.parse(process.env.BASE_URL),
+        origin: corsOrigins,
         credentials: true
     }
 });
