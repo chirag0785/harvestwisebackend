@@ -2,7 +2,7 @@ const Inventory = require("../models/inventory");
 const ErrorHandler = require("../utils/ErrorHandler");
 const ErrorWrapper = require("../utils/ErrorWrapper");
 const getDataUri=require('../utils/datauriparser');
-const uploadOnCloudinary = require("../utils/uploadOnCloudinary");
+const {uploadOnCloudinary} = require("../utils/uploadOnCloudinary");
 
 
 
